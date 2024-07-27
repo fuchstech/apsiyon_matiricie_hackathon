@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Sayfası</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Sosyal</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="#profile-section">Profilim</a></li>
+            <li><a href="#events-section">Etkinliklerim</a></li>
+            <li><a href="#neighbors-section">Komşularım</a></li>
+            <li><a href="#market-section">Sanal Pazarım</a></li>
+        </ul>
+        <br>
+    </div>
+    <div id="profile-section" class="container">
+        <div class="profile-photo">
+            <img id="profile-photo" src="matiricie.jpg" alt="Profil Fotoğrafı">
+            <button id="change-photo-btn" onclick="changePhoto('profile-photo-input')">Değiştir</button>
+            <input type="file" id="profile-photo-input" style="display: none;" accept="image/*"
+                onchange="previewPhoto(event, 'profile-photo')">
+        </div>
+        <div class="profile-info">
+            <p>Kapı No: <span id="door-number">52</span></p>
+            <p>Kişi Sayısı: <span id="num-people">3</span></p>
+            <p>Evcil Hayvan Sayısı: <span id="num-pets">1</span></p>
+            <br>
+            <hr><br>
+            <p><b>Hane Halkı</b></p>
+            <ul id="household-list">
+                <li><a href="javascript:void(0);" onclick="showInfo('mert')">Mert Hızmalı</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('Sinem')">Sinem Hızmalı</a></li>
+                <li><a href="javascript:void(0);" onclick="showInfo('masal')">Masal Hızmalı</a></li>
+            </ul>
+            <p><b>Evcil Hayvanlar</b></p>
+            <ul id="pet-list">
+                <li><a href="javascript:void(0);" onclick="showInfo('bella')">Bella</a></li>
+            </ul>
+        </div>
+        <div id="mert" class="detail">
+            <h2>Mert Hızmalı</h2>
+            <p>Yaş: <span id="mert-age">32</span></p>
+            <p>Meslek: <span id="mert-job">Yazılım Mühendisi</span></p>
+            <p>Çalıştığı Yer: <span id="mert-work">Morve Teknoloji</span></p>
+            <p>Hobiler: <span id="mert-hobbies">Yüzme, Kitap Okuma, Film İzlemek</span></p>
+            <p>Kan Grubu: <span id="mert-blood-type">A+</span></p>
+            <p>İletişim No: <span id="mert-contact">531-577-8896</span></p>
+            <img id="mert-photo" src="merthizmali.jpeg" alt="Mert Hızmalı Fotoğrafı">
+            <button id="change-photo-btn-mert" onclick="changePhoto('mert-photo-input')">Değiştir</button>
+            <input type="file" id="mert-photo-input" style="display: none;" accept="image/*"
+                onchange="previewPhoto(event, 'mert-photo')"><br><br><br>
+            <button class="delete-button" onclick="confirmDelete('mert')">Kişiyi Sil</button>
+        </div>
+        <div id="Sinem" class="detail">
+            <h2>Sinem Hızmalı</h2>
+            <p>Yaş: <span id="Sinem-age">30</span></p>
+            <p>Meslek: <span id="Sinem-job">Mühendis</span></p>
+            <p>Çalıştığı Yer: <span id="Sinem-work">Poligon By Michigan</span></p>
+            <p>Hobiler: <span id="Sinem-hobbies">Resim Yapmak, Seyahat</span></p>
+            <p>Kan Grubu: <span id="Sinem-blood-type">B+</span></p>
+            <p>İletişim No: <span id="Sinem-contact">555-987-6543</span></p>
+            <img id="Sinem-photo" src="sinemhizmali.jpg" alt="Sinem Hızmalı Fotoğrafı">
+            <button id="change-photo-btn-Sinem" onclick="changePhoto('Sinem-photo-input')">Değiştir</button>
+            <input type="file" id="Sinem-photo-input" style="display: none;" accept="image/*"
+                onchange="previewPhoto(event, 'Sinem-photo')"><br><br><br>
+            <button class="delete-button" onclick="confirmDelete('Sinem')">Kişiyi Sil</button>
+        </div>
+        <div id="masal" class="detail">
+            <h2>Masal Hızmalı</h2>
+            <p>Okul: <span id="masal-school">Matiricie Anaokulu</span></p>
+            <p>Sınıf: <span id="masal-class">Tilkiler Sınıfı</span></p>
+            <p>Yaş: <span id="masal-age">5</span></p>
+            <p>Kan Grubu: <span id="masal-blood-type">AB-</span></p>
+            <img id="masal-photo" src="masalhizmali.jpg" alt="Masal Hızmalı Fotoğrafı">
+            <button id="change-photo-btn-masal" onclick="changePhoto('masal-photo-input')">Değiştir</button>
+            <input type="file" id="masal-photo-input" style="display: none;" accept="image/*"
+                onchange="previewPhoto(event, 'masal-photo')"><br><br><br>
+            <button class="delete-button" onclick="confirmDelete('masal')">Kişiyi Sil</button><br><br><br>
+        </div>
+        <div id="bella" class="detail">
+            <h2>Bella</h2>
+            <p>Cins: <span id="bella-breed">Golden Retriever</span></p>
+            <p>Yaş: <span id="bella-age">2</span></p>
+            <img id="bella-photo" src="golden.jpeg" alt="Bella Fotoğrafı">
+            <button id="change-photo-btn-bella" onclick="changePhoto('bella-photo-input')">Değiştir</button>
+            <input type="file" id="bella-photo-input" style="display: none;" accept="image/*"
+                onchange="previewPhoto(event, 'bella-photo')"><br><br><br>
+            <button class="delete-button" onclick="confirmDelete('bella')">Sil</button>
+        </div>
+        <button class="edit-button" onclick="editInfo()">Düzenle</button>
+        <button class="add-person-button" onclick="addPerson()">Yeni Kişi Ekle</button>
+        <button class="add-pet-button" onclick="addPet()">Yeni Evcil Hayvan Ekle</button>
+    </div>
+    <div id="events-section" class="container">
+        <h2>Etkinlikler</h2>
+        <div class="calendar">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Saat</th>
+                        <th>Etkinlik</th>
+                        <th>Yer</th>
+                        <th>Oy Ver</th>
+                        <th>Toplam Oy</th>
+                    </tr>
+                </thead>
+                <tbody id="event-table-body">
+                    <tr>
+                        <td>2024-07-20</td>
+                        <td>18:00</td>
+                        <td>Film Gecesi</td>
+                        <td>Sinema Salonu</td>
+                        <td><button onclick="vote(this, 'film-oy')"><i class="fa fa-thumbs-up"></i> Oy Ver</button></td>
+                        <td><span id="film-oy">35</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024-07-22</td>
+                        <td>10:00</td>
+                        <td>Spor Etkinliği</td>
+                        <td>Spor Salonu</td>
+                        <td><button onclick="vote(this, 'spor-oy')"><i class="fa fa-thumbs-up"></i> Oy Ver</button></td>
+                        <td><span id="spor-oy">12</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024-07-23</td>
+                        <td>19:30</td>
+                        <td>Futbol Turnuvası</td>
+                        <td>Bahçe</td>
+                        <td><button onclick="vote(this, 'bahce-oy')"><i class="fa fa-thumbs-up"></i> Oy Ver</button>
+                        </td>
+                        <td><span id="bahce-oy">16</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>30 hanenin oy verdiği etkinlik belirtilen tarih, saat ve yerde gerçekleştirilecektir. Herkes davetlidir :)
+        </p>
+        <div class="suggest-event">
+            <h3>Etkinlik Öner</h3>
+            <form onsubmit="addEvent(event)">
+                <div class="form-group">
+                    <label for="description">Kısa Açıklama:</label>
+                    <input type="text" id="description" name="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Yer:</label>
+                    <select id="location" name="location" required>
+                        <option value="Bahçe">Bahçe</option>
+                        <option value="Spor Salonu">Spor Salonu</option>
+                        <option value="Sinema Salonu">Sinema Salonu</option>
+                        <option value="Toplantı Salonu">Toplantı Salonu</option>
+                        <option value="Havuz">Havuz</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Tarih:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Saat:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <button type="submit">Gönder</button>
+            </form>
+        </div>
+    </div>
+    <div id="neighbors-section" class="container">
+        <h2>Komşularım</h2>
+        <div class="search-box">
+            <input type="text" id="search-bar" placeholder="Aile Soyadına Göre Ara...">
+            <i class="fa fa-search"></i>
+        </div>
+        <select id="filter-job" class="filter-dropdown">
+            <option value="">Mesleğe Göre Filtrele</option>
+        </select>
+        <select id="filter-hobby" class="filter-dropdown">
+            <option value="">Hobiye Göre Filtrele</option>
+        </select>
+        <select id="filter-pet" class="filter-dropdown">
+            <option value="">Evcil Hayvana Göre Filtrele</option>
+        </select>
+        <select id="filter-blood-type" class="filter-dropdown">
+            <option value="">Kan Grubuna Göre Filtrele</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="0+">0+</option>
+            <option value="0-">0-</option>
+        </select>
+        <div id="neighbor-list">
+            <!-- Komşu aileler burada listelenecek -->
+        </div>
+    </div>
+    <div id="market-section" class="market-section-container">
+        <h2>Sanal Pazarım</h2>
+        <div class="market-section">
+            <h3>Satış</h3>
+            <div class="sale-items">
+                <div class="item">
+                    <img src="urun1.jpeg" alt="Ürün 1">
+                    <p>Açıklama: Ahşap kitaplıklı çalışma masası. Çok az kullanıldı, çiziği yoktur. (Kitaplar dahil
+                        değildir.)</p>
+                    <p>Fiyat: 500 TL</p>
+                    <p>İlan Veren<br><br> <a href="javascript:void(0);"
+                            onclick="showMemberDetails('serhat-yenice')">Serhat Yenice</a></p>
+                </div>
+                <div class="item">
+                    <img src="urun2.jpeg" alt="Ürün 2">
+                    <p>Açıklama: 2 cezveli kahve makinesi. 4 fincan kahveyi aynı anda yapabiliyor.</p>
+                    <p>Fiyat: 3.000 TL</p>
+                    <p>İlan Veren<br><br> <a href="javascript:void(0);"
+                            onclick="showMemberDetails('bulent-bilir')">Bülent Bilir</a></p>
+                </div>
+                <div class="item">
+                    <img src="urun3.jpeg" alt="Ürün 3">
+                    <p>Açıklama: Katlanabilir kırmızı kamp sandalyesi. Yırtığı, söküğü yoktur. Sağlamdır, ağır kiloları
+                        da taşıyabilir.</p>
+                    <p>Fiyat: 300 TL</p>
+                    <p>İlan Veren <br><br> <a href="javascript:void(0);"
+                            onclick="showMemberDetails('hamdi-yildiz')">Hamdi Yıldız</a></p>
+                </div>
+            </div>
+            <h3>Alış</h3>
+            <div class="buy-items">
+                <div class="item">
+                    <p>Alınmak İstenen Ürün: Bisiklet</p>
+                    <p>Bütçe: 1.500 TL</p>
+                    <p>İlan Veren <br><br><a href="javascript:void(0);" onclick="showMemberDetails('fatma-arda')">Fatma
+                            Arda</a></p>
+                </div>
+                <div class="item">
+                    <p>Alınmak İstenen Ürün: Laptop</p>
+                    <p>Bütçe: 9.000 TL</p>
+                    <p>İlan Veren <br><br> <a href="javascript:void(0);" onclick="showMemberDetails('ali-arslan')">Ali
+                            Arslan</a></p>
+                </div>
+                <div class="item" id="new-buy-item">
+                    <form id="buy-item-form" onsubmit="addBuyItem(event)">
+                        <div class="form-group">
+                            <label for="buy-item-name">Ürün Adı:</label>
+                            <input type="text" id="buy-item-name" name="buy-item-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="buy-item-budget">Bütçe:</label>
+                            <input type="number" id="buy-item-budget" name="buy-item-budget" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="buy-item-description">Açıklama:</label>
+                            <input type="text" id="buy-item-description" name="buy-item-description" required>
+                        </div>
+                        <button type="submit">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="back-to-top" onclick="topFunction()">Başa Dön</button>
+    <script>
+        function showInfo(id) {
+            const element = document.getElementById(id);
+            const isVisible = element.style.display === 'block';
+            document.querySelectorAll('.detail').forEach(function (detail) {
+                detail.style.display = 'none';
+            });
+            if (!isVisible) {
+                element.style.display = 'block';
+            }
+        }
+        function editInfo() {
+            const editableElements = document.querySelectorAll('.detail span');
+            editableElements.forEach(function (element) {
+                const currentValue = element.innerText;
+                const inputField = document.createElement('input');
+                inputField.type = 'text';
+                inputField.value = currentValue;
+                inputField.id = element.id;
+                element.replaceWith(inputField);
+            });
+            const saveButton = document.createElement('button');
+            saveButton.innerText = 'Kaydet';
+            saveButton.className = 'save-button';
+            saveButton.onclick = saveInfo;
+            document.querySelector('.edit-button').replaceWith(saveButton);
+        }
+        function saveInfo() {
+            const inputFields = document.querySelectorAll('.detail input[type="text"]');
+            inputFields.forEach(function (input) {
+                const span = document.createElement('span');
+                span.id = input.id;
+                span.innerText = input.value;
+                input.replaceWith(span);
+            });
+            const editButton = document.createElement('button');
+            editButton.innerText = 'Düzenle';
+            editButton.className = 'edit-button';
+            editButton.onclick = editInfo;
+            document.querySelector('.save-button').replaceWith(editButton);
+            document.querySelector('.add-button').remove();
+        }
+        function changePhoto(inputId) {
+            document.getElementById(inputId).click();
+        }
+        function previewPhoto(event, imgId) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const photo = document.getElementById(imgId);
+                photo.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+        function addPerson() {
+            const newPersonName = prompt("Yeni kişinin adı:");
+            if (newPersonName) {
+                const newPersonId = `person-${newPersonName.toLowerCase().replace(/\s+/g, '-')}`;
+                const newPersonLink = document.createElement('li');
+                newPersonLink.innerHTML = `<a href="javascript:void(0);" onclick="showInfo('${newPersonId}')">${newPersonName}</a>`;
+                document.getElementById('household-list').appendChild(newPersonLink);
+
+                const newPersonDetail = document.createElement('div');
+                newPersonDetail.id = newPersonId;
+                newPersonDetail.className = 'detail';
+                newPersonDetail.innerHTML = `
+                <h2>${newPersonName}</h2>
+                <p>Yaş: <span id="${newPersonId}-age">0</span></p>
+                <p>Meslek: <span id="${newPersonId}-job">Bilinmiyor</span></p>
+                <p>Çalıştığı Yer: <span id="${newPersonId}-work">Bilinmiyor</span></p>
+                <p>Hobiler: <span id="${newPersonId}-hobbies">Bilinmiyor</span></p>
+                <p>Kan Grubu: <span id="${newPersonId}-blood-type">Bilinmiyor</span></p>
+                <p>İletişim No: <span id="${newPersonId}-contact">Bilinmiyor</span></p>
+                <img id="${newPersonId}-photo" src="https://via.placeholder.com/150" alt="${newPersonName} Fotoğrafı">
+                <button id="change-photo-btn-${newPersonId}" onclick="changePhoto('${newPersonId}-photo-input')">Değiştir</button>
+                <input type="file" id="${newPersonId}-photo-input" style="display: none;" accept="image/*" onchange="previewPhoto(event, '${newPersonId}-photo')"><br><br><br>
+                <div class="button-container">
+                    <button class="delete-button" onclick="confirmDelete('${newPersonId}', true)">Kişiyi Sil</button>
+                </div>
+            `;
+                const petSection = document.querySelector('#pet-list').parentElement;
+                petSection.insertAdjacentElement('afterend', newPersonDetail);
+                updatePersonCount(1);
+                showInfo(newPersonId);
+            }
+        }
+        function addPet() {
+            const newPetName = prompt("Yeni evcil hayvanın adı:");
+            if (newPetName) {
+                const newPetId = `pet-${newPetName.toLowerCase().replace(/\s+/g, '-')}`;
+                const newPetLink = document.createElement('li');
+                newPetLink.innerHTML = `<a href="javascript:void(0);" onclick="showInfo('${newPetId}')">${newPetName}</a>`;
+                document.getElementById('pet-list').appendChild(newPetLink);
+                const newPetDetail = document.createElement('div');
+                newPetDetail.id = newPetId;
+                newPetDetail.className = 'detail';
+                newPetDetail.innerHTML = `
+                <h2>${newPetName}</h2>
+                <p>Cins: <span id="${newPetId}-breed">Bilinmiyor</span></p>
+                <p>Yaş: <span id="${newPetId}-age">0</span></p>
+                <img id="${newPetId}-photo" src="https://via.placeholder.com/150" alt="${newPetName} Fotoğrafı">
+                <button id="change-photo-btn-${newPetId}" onclick="changePhoto('${newPetId}-photo-input')">Değiştir</button>
+                <input type="file" id="${newPetId}-photo-input" style="display: none;" accept="image/*" onchange="previewPhoto(event, '${newPetId}-photo')"><br><br><br>
+                <div class="button-container">
+                    <button class="delete-button" onclick="confirmDelete('${newPetId}', false)">Sil</button>
+                </div>
+            `;
+                const petSection = document.getElementById('pet-list');
+                petSection.insertAdjacentElement('afterend', newPetDetail);
+
+                updatePetCount(1);
+                showInfo(newPetId);
+            }
+        }
+        function confirmDelete(id) {
+            const confirmation = confirm("Emin misiniz?");
+            if (confirmation) {
+                deletePerson(id);
+            }
+        }
+        function deletePerson(id) {
+            const personDetail = document.getElementById(id);
+            const householdLink = document.querySelector(`#household-list a[onclick="showInfo('${id}')"]`);
+            const petLink = document.querySelector(`#pet-list a[onclick="showInfo('${id}')"]`);
+            const personLink = householdLink ? householdLink.parentElement : petLink.parentElement;
+            if (personDetail && personLink) {
+                personDetail.remove();
+                personLink.remove();
+
+                if (householdLink) {
+                    updatePersonCount(-1);
+                } else if (petLink) {
+                    updatePetCount(-1);
+                }
+            }
+        }
+        function updatePersonCount(change) {
+            const personCountElement = document.getElementById('num-people');
+            let currentCount = parseInt(personCountElement.innerText);
+            personCountElement.innerText = currentCount + change;
+        }
+        function updatePetCount(change) {
+            const petCountElement = document.getElementById('num-pets');
+            let currentCount = parseInt(petCountElement.innerText);
+            petCountElement.innerText = currentCount + change;
+        }
+        function vote(button, voteId) {
+            const voteCount = document.getElementById(voteId);
+            let currentVotes = parseInt(voteCount.innerText);
+            const isVoted = button.classList.contains('voted');
+            if (isVoted) {
+                voteCount.innerText = currentVotes - 1;
+                button.classList.remove('voted');
+                button.innerHTML = "<i class='fa fa-thumbs-up'></i> Oy Ver";
+            } else {
+                voteCount.innerText = currentVotes + 1;
+                button.classList.add('voted');
+                button.innerHTML = "<i class='fa fa-check'></i> Oy Verildi";
+            }
+        }
+        function addEvent(event) {
+            event.preventDefault();
+            const description = document.getElementById('description').value;
+            const location = document.getElementById('location').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const eventTableBody = document.getElementById('event-table-body');
+            const newRow = document.createElement('tr');
+            const dateCell = document.createElement('td');
+            dateCell.textContent = date;
+            const timeCell = document.createElement('td');
+            timeCell.textContent = time;
+            const descriptionCell = document.createElement('td');
+            descriptionCell.textContent = description;
+            const locationCell = document.createElement('td');
+            locationCell.textContent = location;
+            const voteCell = document.createElement('td');
+            const voteButton = document.createElement('button');
+            const voteId = `vote-${Date.now()}`;
+            voteButton.innerHTML = '<i class="fa fa-thumbs-up"></i> Oy Ver';
+            voteButton.onclick = function () {
+                vote(this, voteId);
+            };
+            voteCell.appendChild(voteButton);
+            const voteCountCell = document.createElement('td');
+            const voteCountSpan = document.createElement('span');
+            voteCountSpan.id = voteId;
+            voteCountSpan.textContent = '0';
+            voteCountCell.appendChild(voteCountSpan);
+            newRow.appendChild(dateCell);
+            newRow.appendChild(timeCell);
+            newRow.appendChild(descriptionCell);
+            newRow.appendChild(locationCell);
+            newRow.appendChild(voteCell);
+            newRow.appendChild(voteCountCell);
+            eventTableBody.appendChild(newRow);
+            event.target.reset();
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const neighbors = [
+                {
+                    soyadi: 'Yenice',
+                    kapıNo: 22,
+                    üyeler: [
+                        { ad: 'Serhat', soyad: 'Yenice', yaş: 52, meslek: 'Öğretmen', hobiler: 'Spor Yapmak, Gazete Okumak', foto: 'serhat.jpeg', kanGrubu: 'A+' },
+                        { ad: 'Müveddet', soyad: 'Yenice', yaş: 48, meslek: 'Öğretmen', hobiler: 'Puzzle Yapmak, Kitap Okumak', foto: 'muveddet.jpeg', kanGrubu: 'B+' },
+                        { ad: 'Beril', soyad: 'Yenice', yaş: 19, meslek: 'Öğrenci', hobiler: 'Tiyatro, Seyahat Etmek', foto: 'beril.jpeg', kanGrubu: 'AB-' }
+                    ],
+                    evcilHayvanlar: [
+                        { ad: 'Çakıl', cins: 'Kızıl Yanaklı Su Kaplumbağası', yaş: 2, foto: 'cakil.jpeg' }
+                    ]
+                },
+                {
+                    soyadi: 'Bilir',
+                    kapıNo: 25,
+                    üyeler: [
+                        { ad: 'Bülent', soyad: 'Bilir', yaş: 47, meslek: 'Çiftçi', hobiler: 'Balık Tutmak', foto: 'bulent.jpeg', kanGrubu: '0-' },
+                        { ad: 'Ayşe', soyad: 'Bilir', yaş: 46, meslek: 'Ev Hanımı', hobiler: 'El İşi Yapmak', foto: 'aysebilir.jpeg', kanGrubu: 'A+' },
+                        { ad: 'Kadircan', soyad: 'Bilir', yaş: 20, meslek: 'Öğrenci', hobiler: 'Elektronik', foto: 'kadircan.jpg', kanGrubu: 'B+' },
+                        { ad: 'Yusuf', soyad: 'Bilir', yaş: 16, meslek: 'Öğrenci', hobiler: 'Bilgisayar Oyunları, Çizgi Roman Okumak', foto: 'yusuf.jpeg', kanGrubu: 'AB+' }
+                    ]
+                },
+                {
+                    soyadi: 'Yıldız',
+                    kapıNo: 17,
+                    üyeler: [
+                        { ad: 'Hamdi', soyad: 'Yıldız', yaş: 72, meslek: 'Muhtar', hobiler: 'Gazete Okumak', foto: 'hamdiyildiz.jpeg', kanGrubu: 'A+' },
+                        { ad: 'Nezahat', soyad: 'Yıldız', yaş: 70, meslek: 'Ev Hanımı', hobiler: 'Baklava Yapmak', foto: 'nezahat.jpeg', kanGrubu: '0+' },
+                        { ad: 'Kerem', soyad: 'Yıldız', yaş: 35, meslek: 'Oto Elektrikçi', hobiler: 'Arabalar', foto: 'kerem.jpeg', kanGrubu: 'A-' }
+                    ],
+                    evcilHayvanlar: [
+                        { ad: 'Fıstık', cins: 'Chihuahua', yaş: 4, foto: 'fistik.jpg' }
+                    ]
+                },
+                {
+                    soyadi: 'Arda',
+                    kapıNo: 21,
+                    üyeler: [
+                        { ad: 'Yılmaz', soyad: 'Arda', yaş: 40, meslek: 'Pazarlamacı', hobiler: 'Seyahat', foto: 'yilmaz.jpeg', kanGrubu: 'B+' },
+                        { ad: 'Fatma', soyad: 'Arda', yaş: 38, meslek: 'Ev Hanımı', hobiler: 'El İşi Yapmak', foto: 'fatma.jpeg', kanGrubu: '0-' },
+                        { ad: 'Engin', soyad: 'Arda', yaş: 15, meslek: 'Öğrenci', hobiler: 'Siyaset', foto: 'engin.jpeg', kanGrubu: 'A+' }
+                    ]
+                },
+                {
+                    soyadi: 'Kara',
+                    kapıNo: 18,
+                    üyeler: [
+                        { ad: 'Hasan', soyad: 'Kara', yaş: 60, meslek: 'Emekli', hobiler: 'Bahçecilik', foto: 'hasan.jpeg', kanGrubu: 'B+' },
+                        { ad: 'Emine', soyad: 'Kara', yaş: 58, meslek: 'Ev Hanımı', hobiler: 'Örgü', foto: 'emine.jpeg', kanGrubu: 'A+' }
+                    ]
+                },
+                {
+                    soyadi: 'Çelik',
+                    kapıNo: 19,
+                    üyeler: [
+                        { ad: 'Murat', soyad: 'Çelik', yaş: 35, meslek: 'Öğretmen', hobiler: 'Koşu', foto: 'murat.jpeg', kanGrubu: 'A+' },
+                        { ad: 'Aslı', soyad: 'Çelik', yaş: 33, meslek: 'Hemşire', hobiler: 'Yemek Yapmak', foto: 'asli.jpeg', kanGrubu: 'B+' },
+                        { ad: 'Ege', soyad: 'Çelik', yaş: 10, meslek: 'Öğrenci', hobiler: 'Lego', foto: 'ege.jpg', kanGrubu: '0+' }
+                    ],
+                    evcilHayvanlar: [
+                        { ad: 'Luna', cins: 'Siyam Kedisi', yaş: 2, foto: 'luna.jpeg' }
+                    ]
+                },
+                {
+                    soyadi: 'Arslan',
+                    kapıNo: 30,
+                    üyeler: [
+                        { ad: 'Ali', soyad: 'Arslan', yaş: 45, meslek: 'Mühendis', hobiler: 'Satranç', foto: 'ali.jpeg', kanGrubu: 'A+' },
+                        { ad: 'Ayşe', soyad: 'Arslan', yaş: 42, meslek: 'Doktor', hobiler: 'Kitap Okuma', foto: 'ayse.jpeg', kanGrubu: '0-' },
+                        { ad: 'Ozan', soyad: 'Arslan', yaş: 18, meslek: 'Öğrenci', hobiler: 'Basketbol', foto: 'ozan.jpeg', kanGrubu: 'B+' }
+                    ]
+                }
+            ];
+            const neighborList = document.getElementById('neighbor-list');
+            const jobFilter = document.getElementById('filter-job');
+            const hobbyFilter = document.getElementById('filter-hobby');
+            const petFilter = document.getElementById('filter-pet');
+            neighbors.forEach(function (family) {
+                const familyContainer = document.createElement('div');
+                familyContainer.className = 'family-container';
+                familyContainer.innerHTML = `<h3>${family.soyadi} Ailesi / No:${family.kapıNo}</h3>`;
+                const householdTitle = document.createElement('p');
+                householdTitle.className = 'household-title';
+                householdTitle.innerText = 'Hane Halkı';
+                familyContainer.appendChild(householdTitle);
+                const householdList = document.createElement('div');
+                householdList.className = 'household-list';
+                familyContainer.appendChild(householdList);
+                family.üyeler.forEach(function (member) {
+                    const memberElement = document.createElement('div');
+                    memberElement.className = 'member';
+                    memberElement.innerHTML = `
+                <p onclick="showMemberDetails2('${member.ad}-${member.soyad}')">${member.ad} ${member.soyad}</p>
+                <div id="${member.ad}-${member.soyad}" class="detail">
+                    <p>Yaş: ${member.yaş}</p>
+                    <p>Meslek: ${member.meslek}</p>
+                    <p>Hobiler: ${member.hobiler}</p>
+                    <p>Kan Grubu: ${member.kanGrubu}</p>
+                    <img src="${member.foto}" alt="${member.ad} ${member.soyad} Fotoğrafı">
+                </div>
+            `;
+                    householdList.appendChild(memberElement);
+                    if (!Array.from(jobFilter.options).some(option => option.value === member.meslek)) {
+                        const option = document.createElement('option');
+                        option.value = member.meslek;
+                        option.text = member.meslek;
+                        jobFilter.add(option);
+                    }
+                    member.hobiler.split(', ').forEach(hobi => {
+                        if (!Array.from(hobbyFilter.options).some(option => option.value === hobi)) {
+                            const option = document.createElement('option');
+                            option.value = hobi;
+                            option.text = hobi;
+                            hobbyFilter.add(option);
+                        }
+                    });
+                });
+                if (family.evcilHayvanlar && family.evcilHayvanlar.length > 0) {
+                    const petsTitle = document.createElement('p');
+                    petsTitle.className = 'pets-title';
+                    petsTitle.innerText = 'Evcil Hayvanlar';
+                    familyContainer.appendChild(petsTitle);
+                    const petList = document.createElement('div');
+                    petList.className = 'pet-list';
+                    familyContainer.appendChild(petList);
+                    family.evcilHayvanlar.forEach(function (pet) {
+                        const petElement = document.createElement('div');
+                        petElement.className = 'pet';
+                        petElement.innerHTML = `
+                    <p onclick="showMemberDetails2('${pet.ad}-${family.soyadi}')">${pet.ad}</p>
+                    <div id="${pet.ad}-${family.soyadi}" class="detail">
+                        <p>Cins: ${pet.cins}</p>
+                        <p>Yaş: ${pet.yaş}</p>
+                        <img src="${pet.foto}" alt="${pet.ad} Fotoğrafı">
+                    </div>
+                `;
+                        petList.appendChild(petElement);
+                        if (!Array.from(petFilter.options).some(option => option.value === pet.cins)) {
+                            const option = document.createElement('option');
+                            option.value = pet.cins;
+                            option.text = pet.cins;
+                            petFilter.add(option);
+                        }
+                    });
+                }
+                neighborList.appendChild(familyContainer);
+            });
+            document.getElementById('search-bar').addEventListener('input', function () {
+                const query = this.value.toLowerCase();
+                document.querySelectorAll('.family-container').forEach(function (family) {
+                    const familyName = family.querySelector('h3').innerText.toLowerCase();
+                    family.style.display = familyName.includes(query) ? 'block' : 'none';
+                });
+            });
+            jobFilter.addEventListener('change', function () {
+                const selectedJob = this.value;
+                document.querySelectorAll('.family-container').forEach(function (family) {
+                    let familyHasMatch = false;
+                    family.querySelectorAll('.member').forEach(member => {
+                        const job = member.querySelector('.detail p:nth-child(2)').textContent.split(': ')[1];
+                        if (selectedJob === '' || job === selectedJob) {
+                            member.style.display = 'block';
+                            familyHasMatch = true;
+                        } else {
+                            member.style.display = 'none';
+                        }
+                    });
+                    family.style.display = familyHasMatch ? 'block' : 'none';
+                });
+            });
+            hobbyFilter.addEventListener('change', function () {
+                const selectedHobby = this.value;
+                document.querySelectorAll('.family-container').forEach(function (family) {
+                    let familyHasMatch = false;
+                    family.querySelectorAll('.member').forEach(member => {
+                        const hobbies = member.querySelector('.detail p:nth-child(3)').textContent.split(': ')[1].split(', ');
+                        if (selectedHobby === '' || hobbies.includes(selectedHobby)) {
+                            member.style.display = 'block';
+                            familyHasMatch = true;
+                        } else {
+                            member.style.display = 'none';
+                        }
+                    });
+                    family.style.display = familyHasMatch ? 'block' : 'none';
+                });
+            });
+            petFilter.addEventListener('change', function () {
+                const selectedPet = this.value;
+                document.querySelectorAll('.family-container').forEach(function (family) {
+                    let familyHasMatch = false;
+                    family.querySelectorAll('.pet').forEach(pet => {
+                        const breed = pet.querySelector('.detail p:nth-child(1)').textContent.split(': ')[1];
+                        if (selectedPet === '' || breed === selectedPet) {
+                            pet.style.display = 'block';
+                            familyHasMatch = true;
+                        } else {
+                            pet.style.display = 'none';
+                        }
+                    });
+                    family.style.display = familyHasMatch ? 'block' : 'none';
+                });
+            });
+            document.getElementById('filter-blood-type').addEventListener('change', function () {
+                const selectedBloodType = this.value;
+                document.querySelectorAll('.family-container').forEach(function (family) {
+                    let familyHasMatch = false;
+                    family.querySelectorAll('.member').forEach(member => {
+                        const bloodType = member.querySelector('.detail p:nth-child(4)').textContent.split(': ')[1];
+                        if (selectedBloodType === '' || bloodType === selectedBloodType) {
+                            member.style.display = 'block';
+                            familyHasMatch = true;
+                        } else {
+                            member.style.display = 'none';
+                        }
+                    });
+                    family.querySelectorAll('.pet').forEach(pet => {
+                        pet.style.display = selectedBloodType === '' ? 'block' : 'none';
+                    });
+                    const petsTitle = family.querySelector('.pets-title');
+                    if (petsTitle) {
+                        petsTitle.style.display = selectedBloodType === '' ? 'block' : 'none';
+                    }
+                    family.style.display = familyHasMatch ? 'block' : 'none';
+                    const memberVisible = family.querySelector('.member[style*="display: block"]');
+                    const petVisible = family.querySelector('.pet[style*="display: block"]');
+                    if (!memberVisible && petVisible) {
+                        family.style.display = 'none';
+                    }
+                });
+            });
+        });
+        function showMemberDetails2(id) {
+            const element = document.getElementById(id);
+            const isVisible = element.style.display === 'block';
+            document.querySelectorAll('.detail').forEach(function (detail) {
+                detail.style.display = 'none';
+            });
+
+            if (!isVisible) {
+                element.style.display = 'block';
+            }
+        }
+        function addBuyItem(event) {
+            event.preventDefault();
+            const name = document.getElementById('buy-item-name').value;
+            const budget = document.getElementById('buy-item-budget').value;
+            const description = document.getElementById('buy-item-description').value;
+
+            const newItem = document.createElement('div');
+            newItem.className = 'item';
+            newItem.innerHTML = `
+        <p>Alınmak İstenen Ürün: ${name}</p>
+        <p>Bütçe: ${budget} TL</p>
+        <p>Açıklama: ${description}</p>
+        <p>İlan Veren <br> <br> <a href="javascript:void(0);" onclick="showMemberDetails2('mert-hizmali')">Mert Hızmalı</a></p>
+    `;
+            document.querySelector('.buy-items').appendChild(newItem);
+            document.getElementById('buy-item-form').reset();
+        }
+        function showMemberDetails(id) {
+            const details = {
+                'serhat-yenice': {
+                    name: 'Serhat Yenice',
+                    age: 52,
+                    job: 'Öğretmen',
+                    hobbies: 'Spor Yapmak, Gazete Okumak',
+                    photo: 'serhat.jpeg',
+                    kapıNo: 22,
+                    kanGrubu: 'A+'
+                },
+                'bulent-bilir': {
+                    name: 'Bülent Bilir',
+                    age: 47,
+                    job: 'Çiftçi',
+                    hobbies: 'Balık Tutmak',
+                    photo: 'bulent.jpeg',
+                    kapıNo: 25,
+                    kanGrubu: '0-'
+                },
+                'hamdi-yildiz': {
+                    name: 'Hamdi Yıldız',
+                    age: 72,
+                    job: 'Muhtar',
+                    hobbies: 'Gazete Okumak',
+                    photo: 'hamdiyildiz.jpeg',
+                    kapıNo: 17,
+                    kanGrubu: 'A+'
+                },
+                'fatma-arda': {
+                    name: 'Fatma Arda',
+                    age: 38,
+                    job: 'Ev Hanımı',
+                    hobbies: 'El İşi Yapmak',
+                    photo: 'fatma.jpeg',
+                    kapıNo: 21,
+                    kanGrubu: '0-'
+                },
+                'ali-arslan': {
+                    name: 'Ali Arslan',
+                    age: 45,
+                    job: 'Mühendis',
+                    hobbies: 'Satranç',
+                    photo: 'ali.jpeg',
+                    kapıNo: 30,
+                    kanGrubu: 'A+'
+                }
+            };
+            const member = details[id];
+            if (member) {
+                const modalContent = document.getElementById('modal-content');
+                modalContent.innerHTML = `
+            <h2>${member.name}</h2>
+            <p>Yaş: ${member.age}</p>
+            <p>Meslek: ${member.job}</p>
+            <p>Hobiler: ${member.hobbies}</p>
+            <p>Kan Grubu: ${member.kanGrubu}</p>
+            <p>Kapı No: ${member.kapıNo}</p>
+            <img src="${member.photo}" alt="${member.name} Fotoğrafı" style="width: 100px; height: 100px; border-radius: 50%;">
+        `;
+                const modal = document.getElementById('member-modal');
+                modal.style.display = 'block';
+            }
+        }
+        function closeModal() {
+            const modal = document.getElementById('member-modal');
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById('member-modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+        function topFunction() {
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <div id="member-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-content">
+                <!-- Pop-up -->
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</body>
+
+</html>

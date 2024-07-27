@@ -1,0 +1,14 @@
+pip install opencv-contrib-python
+torch 
+torchvision
+opencv-contrib-python
+imutils
+torch
+numpy
+pytz
+urllib3
+idna
+numpy==1.26.4
+matplotlib==3.6.0
+numpy==1.23.3
+easyocr==1.6.2

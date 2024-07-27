@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enerji</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Enerji</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="#energy-consumption">Enerji Tüketim</a></li>
+            <li><a href="#weather">Hava Durumu</a></li>
+            <li><a href="#density">Yoğunluk</a></li>
+            <li><a href="#control">Kontrol</a></li>
+        </ul>
+        <br>
+    </div>
+    <div>
+        <div id="energy-consumption" class="section">
+            <div class="chart-container">
+                <h2>Hane Enerji Tüketim Grafiği</h2>
+                <canvas id="energyChart"></canvas>
+            </div>
+            <div class="personal-suggestions">
+                <iframe src="https://app.livechatai.com/aibot-iframe/clpx32wex000hl20fy6ecoljt" style="border:1px solid #EAEAEA" width="100%" height="350" frameborder="0"></iframe>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div id="weather" class="section">
+            <h2>Günlük Hava Durumu</h2>
+            <p>Bugün: 35°C, Güneşli <span class="weather-icon">☀️</span></p>
+            <p>Yarın: 32°C, Parçalı Bulutlu <span class="weather-icon">⛅</span></p>
+            <p>Pazar: 23°C, Yağmurlu <span class="weather-icon">🌧️</span></p>
+        </div>
+        <div id="density" class="section">
+            <h2>Yoğunluk Bilgileri</h2>
+            <div class="slider">
+                <button onclick="prevSlide()">&#10094;</button>
+                <div class="slides">
+                    <div class="slide">
+                        <h3>Spor Salonu</h3>
+                        <p>Yoğunluk: %70</p>
+                        <p>Kişi Sayısı: 15</p>
+                        <p>Mekan Sıcaklığı: 22°C</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Toplantı Salonu</h3>
+                        <p>Yoğunluk: %50</p>
+                        <p>Kişi Sayısı: 10</p>
+                        <p>Mekan Sıcaklığı: 24°C</p>
+                    </div>
+                    <div class="slide">
+                        <h3>Havuz</h3>
+                        <p>Yoğunluk: %80</p>
+                        <p>Kişi Sayısı: 20</p>
+                        <p>Mekan Sıcaklığı: 28°C</p>
+                    </div>
+                </div>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+        <div id="control" class="section">
+            <h2>Enerji Kontrol</h2>
+            <div class="buttons">
+                <button onclick="showControl('spor-salonu')">Spor Salonu</button>
+                <button onclick="showControl('toplanti-salonu')">Toplantı Salonu</button>
+                <button onclick="showControl('havuz')">Havuz</button>
+            </div>
+            <div id="control-panel">
+            </div>
+        </div>
+        <div id="auto-control" class="section">
+            <h2>Otomatik Kontrol</h2>
+            <form id="auto-control-form">
+                <label for="condition-type">Otomatik İşlem Ayarla</label>
+                <select id="condition-place" name="condition-place">
+                    <option value="Spor Salonu">Spor Salonu</option>
+                    <option value="Toplantı Salonu">Toplantı Salonu</option>
+                    <option value="Havuz">Havuz</option>
+                </select>
+                <select id="condition-type" name="condition-type">
+                    <option value="yoğunluk">Yoğunluk</option>
+                    <option value="sıcaklık (°C)">Sıcaklık (°C)</option>
+                </select>
+                <input type="number" id="condition-value" name="condition-value" placeholder="Değer girin" min="0" max="100">
+                <label for="device">Cihaz:</label>
+                <select id="device" name="device">
+                    <option value="klima">Klima</option>
+                    <option value="termostat">Termostat</option>
+                    <option value="lambalar">Lambalar</option>
+                </select>
+                <label for="action">İşlem:</label>
+                <select id="action" name="action">
+                    <option value="açılacaktır.">Açılsın.</option>
+                    <option value="kapanacaktır.">Kapansın.</option>
+                </select>
+                <button type="button" onclick="saveAutoControl()">Kaydet</button>
+            </form>
+            <p id="auto-control-result"></p>
+        </div>
+    </div>
+    <button id="back-to-top" onclick="topFunction()">Başa Dön</button>
+    <script>
+        let currentSlide = 0;
+        const settings = {
+            'spor-salonu': {
+                temp: 20,
+                thermostat: 'Kapalı',
+                lights: 'Kapalı'
+            },
+            'toplanti-salonu': {
+                temp: 22,
+                thermostat: 'Kapalı',
+                lights: 'Kapalı'
+            },
+            'havuz': {
+                temp: 24,
+                thermostat: 'Kapalı',
+                lights: 'Kapalı'
+            }
+        };
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            });
+        }
+        function nextSlide() {
+            const slides = document.querySelectorAll('.slide');
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        function prevSlide() {
+            const slides = document.querySelectorAll('.slide');
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        function showControl(location) {
+            const controlPanel = document.getElementById('control-panel');
+            controlPanel.innerHTML = '';
+
+            let formattedLocation = location.charAt(0).toUpperCase() + location.slice(1).replace('-', ' ');
+            if (formattedLocation === 'Spor salonu') {
+                formattedLocation = 'Spor Salonu';
+            }
+            if (formattedLocation === 'Toplanti salonu') {
+                formattedLocation = 'Toplantı Salonu';
+            }
+
+            if (location === 'spor-salonu' || location === 'toplanti-salonu' || location === 'havuz') {
+                controlPanel.innerHTML = `
+                <h3>${formattedLocation} Kontrol Paneli</h3>
+                <div id="${location}-temp-control" style="display: none;">
+                  <p>Klima Sıcaklığı: <button onclick="adjustTemp('decrease', '${location}-temp')">-</button> <span id="${location}-temp">20</span>°C <button onclick="adjustTemp('increase', '${location}-temp')">+</button></p>
+                </div>
+                <p>Klima: <button id="${location}-klima" onclick="toggleSwitch('${location}-klima', '${location}-temp-control')">Kapalı</button></p>
+                <p>Termostat: <button id="${location}-thermostat" onclick="toggleSwitch('${location}-thermostat')">Kapalı</button></p>
+                <p>Lambalar:</p>
+                <div class="lamps" id="${location}-lamps">
+                    ${Array(6).fill().map((_, i) => `<div id="${location}-lamp${i + 1}" class="lamp" onclick="toggleLamp('${location}-lamp${i + 1}')"></div>`).join('')}
+                </div>`;
+                loadSavedStates(location);
+            }
+        }
+
+        function adjustTemp(action, tempId) {
+            const tempSpan = document.getElementById(tempId);
+            let currentTemp = parseInt(tempSpan.textContent);
+            if (action === 'increase') {
+                currentTemp++;
+            } else if (action === 'decrease') {
+                currentTemp--;
+            }
+            tempSpan.textContent = currentTemp;
+            saveState(tempId, currentTemp);
+        }
+        function toggleSwitch(deviceId, tempControlId) {
+            const deviceButton = document.getElementById(deviceId);
+            const tempControl = document.getElementById(tempControlId);
+            if (deviceButton.textContent === 'Kapalı') {
+                deviceButton.textContent = 'Açık';
+                if (tempControl) {
+                    tempControl.style.display = 'block';
+                }
+            } else {
+                deviceButton.textContent = 'Kapalı';
+                if (tempControl) {
+                    tempControl.style.display = 'none';
+                }
+            }
+            saveState(deviceId, deviceButton.textContent);
+        }
+        function toggleLamp(lampId) {
+            const lamp = document.getElementById(lampId);
+            if (lamp) {
+                lamp.classList.toggle('on');
+                const isOn = lamp.classList.contains('on');
+                saveState(lampId, isOn ? 'on' : 'off');
+            }
+        }
+        function saveState(key, value) {
+            localStorage.setItem(key, value);
+        }
+        function loadSavedStates(location) {
+            const tempId = `${location}-temp`;
+            const klimaId = `${location}-klima`;
+            const thermostatId = `${location}-thermostat`;
+            const tempControlId = `${location}-temp-control`;
+            const lampsIdPrefix = `${location}-lamp`;
+
+            const savedTemp = localStorage.getItem(tempId);
+            if (savedTemp !== null) {
+                document.getElementById(tempId).textContent = savedTemp;
+            }
+
+            const savedKlima = localStorage.getItem(klimaId);
+            if (savedKlima !== null) {
+                const deviceButton = document.getElementById(klimaId);
+                const tempControl = document.getElementById(tempControlId);
+                deviceButton.textContent = savedKlima;
+                tempControl.style.display = savedKlima === 'Açık' ? 'block' : 'none';
+            }
+
+            const savedThermostat = localStorage.getItem(thermostatId);
+            if (savedThermostat !== null) {
+                document.getElementById(thermostatId).textContent = savedThermostat;
+            }
+
+            for (let i = 1; i <= 6; i++) {
+                const lampId = `${lampsIdPrefix}${i}`;
+                const savedLampState = localStorage.getItem(lampId);
+                if (savedLampState !== null) {
+                    const lamp = document.getElementById(lampId);
+                    if (savedLampState === 'on') {
+                        lamp.classList.add('on');
+                    } else {
+                        lamp.classList.remove('on');
+                    }
+                }
+            }
+        }
+        function topFunction() {
+            document.documentElement.scrollTop = 0;
+        }
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1).replace('-', ' ');
+        }
+        showSlide(currentSlide);
+        const ctx = document.getElementById('energyChart').getContext('2d');
+        const energyChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
+                datasets: [{
+                    label: 'Enerji Tüketimi (kW)',
+                    data: [10, 12, 8, 11, 14, 10, 16, 20, 24, 18, 20, 30],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: function (context) {
+                        var index = context.dataIndex;
+                        var value = context.dataset.data[index];
+                        return value > 20 ? 'red' : 'rgba(75, 192, 192, 1)';
+                    }
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        function saveAutoControl() {
+            const conditionPlace = document.getElementById('condition-place').value;
+            const conditionType = document.getElementById('condition-type').value;
+            const conditionValue = document.getElementById('condition-value').value;
+            const device = document.getElementById('device').value;
+            const action = document.getElementById('action').value;
+            const resultText = `${conditionPlace}'nda ${conditionType} ${conditionValue} olduğunda ${device} ${action}`;
+            document.getElementById('auto-control-result').textContent = resultText;
+        }
+    </script>
+</body>
+
+</html>
