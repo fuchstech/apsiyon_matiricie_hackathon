@@ -40,7 +40,10 @@ Bu adımları takip ederek projeyi başarılı bir şekilde çalıştırabilirsi
 
 
 <img align=center width=900 src="tanitim.gif" />
-- Videonun Tam Haline Buradan Ulaşabilirsiniz [link](https://youtu.be/BUE-WcS3bdg?si=_pjEbOiSUxLbYoju)
+
+- Videonun Tam Hali
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BUE-WcS3bdg?si=60Z8LxChQGWLamVb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 # Web
 Sosyal klasörü içerisinde yer alan dosyalarda çeşitli resimler, javascript fonksiyonları, HTML5 ve CSS kodları kullanılmıştır. Bu sayfa üzerinde profil oluşturma, aile üyeleri ve evcil hayvan bilgileri ekleme/düzenleme bölümleri bulunmaktadır. Aynı zamanda bu profiller sayesinde komşular tanınarak çeşitli özelliklere göre filtrelenebilecektir. Apartman yönetimi tarafından yapılacak etkinlikler ve olası toplantılar bu sayfada görünecek olup, alıp satılmak istenen eşyaların eklenmesi sağlanmaktadır.
