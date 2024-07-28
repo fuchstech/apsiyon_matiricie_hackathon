@@ -39,7 +39,7 @@ Aşağıdaki adımları izleyerek projeyi kurabilirsiniz:
 Bu adımları takip ederek projeyi başarılı bir şekilde çalıştırabilirsiniz.
 
 
-
+<img align=right width=150 src="tanitim.gif" />
 
 
 # Web
