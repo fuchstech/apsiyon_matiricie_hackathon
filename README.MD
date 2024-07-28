@@ -1,4 +1,4 @@
-#Otopark Yönetimi
+# Otopark Yönetimi
 Otopark yönetimi iki ana parçaya ayrılarak geliştilirmiştir. Bunlar plaka tanıma sistemi ve otopark doluluk tespitidir. Otopark doluluk tespiti, açık otoparkları olan siteler için hangi aracın hangi park yerinde olduğunu tespit edilebilmesini sağlayan bir sistemdir. Otoparkı gören bir güvenlik kamerasının görüntüsü prototip için replike edilip bu görüntü üzerinde algoritmalar geliştirmiştir. 
 
 #Kurulum
@@ -40,7 +40,7 @@ Bu adımları takip ederek projeyi başarılı bir şekilde çalıştırabilirsi
 
 
 <img align=center width=900 src="tanitim.gif" />
-
+- Videonun Tam Haline Buradan Ulaşabilirsiniz [link](https://youtu.be/BUE-WcS3bdg?si=_pjEbOiSUxLbYoju)
 
 # Web
 Sosyal klasörü içerisinde yer alan dosyalarda çeşitli resimler, javascript fonksiyonları, HTML5 ve CSS kodları kullanılmıştır. Bu sayfa üzerinde profil oluşturma, aile üyeleri ve evcil hayvan bilgileri ekleme/düzenleme bölümleri bulunmaktadır. Aynı zamanda bu profiller sayesinde komşular tanınarak çeşitli özelliklere göre filtrelenebilecektir. Apartman yönetimi tarafından yapılacak etkinlikler ve olası toplantılar bu sayfada görünecek olup, alıp satılmak istenen eşyaların eklenmesi sağlanmaktadır.
