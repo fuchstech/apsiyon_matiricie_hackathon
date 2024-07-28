@@ -42,7 +42,7 @@ Bu adımları takip ederek projeyi başarılı bir şekilde çalıştırabilirsi
 
 
 
-#Web
+# Web
 Sosyal klasörü içerisinde yer alan dosyalarda çeşitli resimler, javascript fonksiyonları, HTML5 ve CSS kodları kullanılmıştır. Bu sayfa üzerinde profil oluşturma, aile üyeleri ve evcil hayvan bilgileri ekleme/düzenleme bölümleri bulunmaktadır. Aynı zamanda bu profiller sayesinde komşular tanınarak çeşitli özelliklere göre filtrelenebilecektir. Apartman yönetimi tarafından yapılacak etkinlikler ve olası toplantılar bu sayfada görünecek olup, alıp satılmak istenen eşyaların eklenmesi sağlanmaktadır.
 
 Enerji klasörü içerisinde bulunan dosyalarda javascript fonksiyonları, HTML5 ve CSS kodları kullanılmıştır. Bu sayfada hanenin enerji tüketim grafiği, enerji tüketiminde fayda sağlayacak ve sorulara cevap veren sanal asistan, ortak kullanım alanlarının yoğunluk ve sıcaklıklarını kontrol etmeye ve görmeye yarayan bir ekran bulunmaktadır. Aynı zamanda günlük hava durumunu da yansıtan bir ekran yer almaktadır.
